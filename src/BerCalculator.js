@@ -1,4 +1,11 @@
-﻿// client/src/BerCalculator.js
+﻿// === VERCEL DEPLOYMENT RESET - 2024 ===
+import React, { useState } from 'react';
+import axios from 'axios';
+
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+
+// ... the rest of your code ...
+// client/src/BerCalculator.js
 import React, { useState } from 'react';
 import axios from 'axios';
 
