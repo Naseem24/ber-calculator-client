@@ -1,9 +1,10 @@
-// client/src/BerCalculator.js
+﻿// client/src/BerCalculator.js
 import React, { useState } from 'react';
 import axios from 'axios';
 
 // The backend URL for local testing. We will connect to the server we built in Step 4.
-const API_URL = 'http://localhost:3001';
+// ✅ CORRECT
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
 
 const BerCalculator = () => {
     // State to hold user inputs
