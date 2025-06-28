@@ -1,11 +1,27 @@
-/* General App Styles */
-body {
-    background-color: #282c34;
-    color: white;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-    margin: 0;
+﻿/* === GLOBAL STYLES & TYPOGRAPHY === */
+:root {
+    --bg-deep-space: #282c34;
+    --bg-slate-gray: #3a3f4a;
+    --bg-ai-tint: #404552;
+    --accent-teal: #00bcd4;
+    --accent-teal-hover: #0097a7;
+    --text-primary: #f0f0f0;
+    --text-secondary: #c0c0c0;
+    --border-color: #555;
+    --error-color: #ff6b6b;
+    --error-bg: #4d2f2f;
 }
 
+body {
+    background-color: var(--bg-deep-space);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* === LAYOUT & STRUCTURE === */
 .App {
     text-align: center;
 }
@@ -13,141 +29,225 @@ body {
 .App-header {
     background-color: #1f232b;
     padding: 20px;
-    border-bottom: 2px solid #00bcd4;
+    border-bottom: 2px solid var(--accent-teal);
 }
 
-h1 {
-    margin: 0;
-    font-size: 2rem;
-}
+    .App-header h1 {
+        margin: 0;
+        font-size: 2rem;
+        font-weight: 600;
+    }
 
-h2 {
-    margin-top: 0;
-    color: #e0e0e0;
-    border-bottom: 1px solid #555;
-    padding-bottom: 0.5rem;
-}
-
-/* New Layout Styles */
-.main-content {
-    display: flex;
-    flex-direction: row;
+.page-content {
     width: 100%;
-    max-width: 1200px;
+    max-width: 960px;
     margin: 2rem auto;
-    gap: 2rem;
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+
+/* === HOMEPAGE STYLES === */
+.homepage-container {
+    text-align: center;
+}
+
+.homepage-intro {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto 2.5rem auto;
+}
+
+.calculator-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.calculator-card-link {
+    background-color: var(--bg-slate-gray);
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-primary);
+    text-align: left;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border: 1px solid var(--border-color);
+}
+
+    .calculator-card-link:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        border-color: var(--accent-teal);
+    }
+
+    .calculator-card-link h3 {
+        margin: 0 0 0.75rem 0;
+        color: var(--accent-teal);
+        font-size: 1.3rem;
+    }
+
+    .calculator-card-link p {
+        margin: 0;
+        color: var(--text-secondary);
+        line-height: 1.6;
+    }
+
+
+/* === CALCULATOR PAGE STYLES === */
+.back-link-container {
+    margin-bottom: 2rem;
+}
+
+    .back-link-container a {
+        color: var(--accent-teal);
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+        .back-link-container a:hover {
+            text-decoration: underline;
+        }
+
+.card {
+    background-color: var(--bg-slate-gray);
+    padding: 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     text-align: left;
 }
 
-.sidebar {
-    flex-basis: 250px;
-    flex-shrink: 0;
-    background-color: #3a3f4a;
-    padding: 1.5rem;
-    border-radius: 8px;
-    align-self: flex-start;
-}
-
-    .sidebar h3 {
+    .card h2 {
         margin-top: 0;
-        color: #e0e0e0;
-        border-bottom: 1px solid #555;
-        padding-bottom: 0.5rem;
+        color: var(--text-primary);
+        font-size: 1.5rem;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 1rem;
+        margin-bottom: 2rem;
     }
 
-    .sidebar ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    .sidebar li {
-        padding: 0.75rem 0.5rem;
-        color: #c0c0c0;
-        cursor: pointer;
-        border-radius: 4px;
-        transition: background-color 0.2s, color 0.2s;
-    }
-
-        .sidebar li:hover {
-            background-color: #4a4f5a;
-            color: #fff;
-        }
-
-        .sidebar li.active {
-            background-color: #00bcd4;
-            color: #1a1a1a;
-            font-weight: bold;
-        }
-
-.content-area {
-    flex-grow: 1;
-}
-
-/* Card and Form Styles */
-.card {
-    background-color: #3a3f4a;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
+/* === FORM, RESULTS & AI BOX (Shared Styles) === */
 .form-group {
     margin-bottom: 1.5rem;
 }
 
     .form-group label {
         display: block;
-        margin-bottom: 0.5rem;
-        color: #c0c0c0;
+        margin-bottom: 0.6rem;
+        color: var(--text-secondary);
         font-size: 0.9rem;
+        font-weight: 500;
     }
 
-    .form-group input,
-    .form-group select {
+    .form-group input, .form-group select {
         width: 100%;
-        padding: 0.75rem;
-        border-radius: 4px;
-        border: 1px solid #555;
-        background-color: #282c34;
-        color: white;
+        padding: 0.8rem;
+        border-radius: 6px;
+        border: 1px solid var(--border-color);
+        background-color: var(--bg-deep-space);
+        color: var(--text-primary);
         font-size: 1rem;
-        box-sizing: border-box; /* Important for padding */
+        box-sizing: border-box;
+        transition: border-color 0.2s, box-shadow 0.2s;
     }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-teal);
+            box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.3);
+        }
 
 button {
     width: 100%;
-    padding: 0.8rem 1rem;
+    padding: 0.9rem 1rem;
     font-size: 1rem;
-    font-weight: bold;
-    color: #1a1a1a;
-    background-color: #00bcd4;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--bg-deep-space);
+    background-color: var(--accent-teal);
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
     transition: background-color 0.2s;
+    margin-top: 1rem;
 }
 
     button:disabled {
-        background-color: #555;
+        background-color: var(--border-color);
+        color: #999;
         cursor: not-allowed;
     }
 
     button:hover:not(:disabled) {
-        background-color: #0097a7;
+        background-color: var(--accent-teal-hover);
     }
 
-/* Results and Error Styles */
 .error {
-    color: #ff6b6b;
-    background-color: #4d2f2f;
+    color: var(--text-primary);
+    background-color: var(--error-bg);
+    border: 1px solid var(--error-color);
     padding: 1rem;
-    border-radius: 4px;
+    border-radius: 6px;
     margin-top: 1.5rem;
 }
 
 .results {
-    margin-top: 2rem;
+    margin-top: 2.5rem;
     padding-top: 1.5rem;
-    border-top: 1px solid #555;
+    border-top: 1px solid var(--border-color);
 }
+
+    .results h3 {
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+        font-size: 1.3rem;
+        color: var(--text-primary);
+    }
+
+    .results p {
+        margin: 0.5rem 0;
+        line-height: 1.6;
+        color: var(--text-secondary);
+    }
+
+        .results p strong {
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+
+    .results hr {
+        border: none;
+        border-top: 1px solid var(--border-color);
+        margin: 2rem 0;
+    }
+
+.ai-explanation {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    background-color: var(--bg-ai-tint);
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-teal);
+}
+
+    .ai-explanation h4 {
+        margin: 0 0 0.75rem 0;
+        color: var(--text-primary);
+        font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+    }
+
+        .ai-explanation h4::before {
+            content: '🤖';
+            margin-right: 0.75rem;
+            font-size: 1.4rem;
+        }
+
+    .ai-explanation p {
+        margin: 0;
+        color: var(--text-secondary);
+        font-size: 1rem;
+        line-height: 1.7;
+    }
